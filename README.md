@@ -43,6 +43,10 @@ bun run server
 ```
 
 6. Go to: [http://localhost:3000/graphql](http://localhost:3000/graphql)
+   - Testing API:
+      - a. See GraphQL Queries and Mutations on [./docs](./docs/) folder
+      - b. You can use [./rest-client](./rest-client) requests also
+      - c. You can use [./curl](./curl) requests too
 
 
 ## License
