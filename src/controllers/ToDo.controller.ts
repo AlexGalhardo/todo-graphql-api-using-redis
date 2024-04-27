@@ -7,7 +7,7 @@ export default class ToDoController {
     static async isUserLoggedIn(authorization: string): Promise<{ id: string; email: string }> {
         const jwt_token = authorization;
 
-		if (!jwt_token) throw new Error("Header authorization token missing");
+        if (!jwt_token) throw new Error("Header authorization token missing");
 
         const decodedToken = jsonwebtoken.verify(jwt_token, process.env.JWT_SECRET_KEY) as {
             userId: string;
@@ -28,9 +28,9 @@ export default class ToDoController {
         return userFound;
     }
 
-	static async getToDoById({id}: GetToDoByIdDTO, { authorization }) {
+    static async getToDoById({ id }: GetToDoByIdDTO, { authorization }) {
         try {
-			const userFound = await ToDoController.isUserLoggedIn(authorization);
+            const userFound = await ToDoController.isUserLoggedIn(authorization);
 
             const todoFound = JSON.parse(await redis.get(`todo:${id}`));
 
@@ -44,7 +44,7 @@ export default class ToDoController {
         }
     }
 
-	static async newToDo({title}: NewToDoDTO, { authorization }) {
+    static async newToDo({ title }: NewToDoDTO, { authorization }) {
         try {
             const userFound = await ToDoController.isUserLoggedIn(authorization);
 
@@ -52,7 +52,7 @@ export default class ToDoController {
                 id: randomUUID(),
                 user_id: userFound.id,
                 user_email: userFound.email,
-				title,
+                title,
                 done: false,
                 updated_at: null,
                 created_at: new Date().toISOString(),
@@ -68,9 +68,9 @@ export default class ToDoController {
         }
     }
 
-	static async updateToDo({id, title, done}: UpdateToDoDTO, { authorization }) {
+    static async updateToDo({ id, title, done }: UpdateToDoDTO, { authorization }) {
         try {
-			const userFound = await ToDoController.isUserLoggedIn(authorization);
+            const userFound = await ToDoController.isUserLoggedIn(authorization);
 
             const todoFound = JSON.parse(await redis.get(`todo:${id}`));
 
@@ -96,9 +96,9 @@ export default class ToDoController {
         }
     }
 
-	static async deleteToDo({id}: DeleteToDoDTO, { authorization }) {
+    static async deleteToDo({ id }: DeleteToDoDTO, { authorization }) {
         try {
-			const userFound = await ToDoController.isUserLoggedIn(authorization);
+            const userFound = await ToDoController.isUserLoggedIn(authorization);
 
             const todoFound = JSON.parse(await redis.get(`todo:${id}`));
 
@@ -116,9 +116,9 @@ export default class ToDoController {
         }
     }
 
-    static async allToDos({authorization}) {
+    static async allToDos({ authorization }) {
         try {
-			const userFound = await ToDoController.isUserLoggedIn(authorization);
+            const userFound = await ToDoController.isUserLoggedIn(authorization);
 
             const todoIds = await redis.smembers(`user:${userFound.email}:todos`);
 

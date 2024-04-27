@@ -1,17 +1,17 @@
 export interface GetToDoByIdDTO {
-	id: string;
+    id: string;
 }
 
 export interface NewToDoDTO {
-	title: string;
+    title: string;
 }
 
 export interface UpdateToDoDTO {
-	id: string;
-	title: string;
-	done: boolean
+    id: string;
+    title: string;
+    done: boolean;
 }
 
 export interface DeleteToDoDTO {
-	id: string;
+    id: string;
 }

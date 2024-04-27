@@ -4,9 +4,7 @@
     "server": "bun run --watch src/server.ts",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "husky": "husky install",
-    "build": "bun build --compile --minify ./src/server.ts --outfile server",
-    "prod:server": "./server"
+    "husky": "husky install"
   },
   "dependencies": {
     "@apollo/server": "^4.10.4",

@@ -32,23 +32,17 @@ bun install
 cp .env.example .env
 ```
 
-4. Up Apollo GraphQL server
+4. Up docker-compose redis
+```
+docker-compose up -d
+```
+
+5. Up Apollo GraphQL server
 ```
 bun run server
 ```
 
-
-## [Single-file executable](https://bun.sh/docs/bundler/executables)
-
-- Building Server
-```
-bun build --compile --minify ./src/server.ts --outfile server
-```
-
-- Executing binary
-```
-./server
-```
+6. Go to: [http://localhost:3000/graphql](http://localhost:3000/graphql)
 
 
 ## License
